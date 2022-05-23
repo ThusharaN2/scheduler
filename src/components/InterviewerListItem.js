@@ -3,14 +3,15 @@ import "components/InterviewerListItem.scss";
 import classNames from "classnames";
 
 export default function InterviewerListitem(props) {
+  const {name,avatar,setInterviewer,selected} = props;
 
   const interviewerClass = classNames("interviewers__item", {
-    "interviewers__item--selected": props.selected,
+    "interviewers__item--selected": selected,
   });
 
   const imgClass = classNames({ //conditional SCSS for avatar if selected/not
-    "interviewers__item-image": props.avatar,
-    "interviewers__item-image--selected-image":props.avatar && props.selected
+    "interviewers__item-image": avatar,
+    "interviewers__item-image--selected-image": avatar && selected
   })
 
   function formatName(name,selected){ //conditionally renders name 
@@ -19,13 +20,13 @@ export default function InterviewerListitem(props) {
     }
   }
   return (
-    <li className={interviewerClass} onClick={() => props.setInterviewer(props.id)}> 
+    <li className={interviewerClass} onClick={setInterviewer}> 
       <img
         className={imgClass}
-        src={props.avatar}
-        alt={props.name}
+        src={avatar}
+        alt={name}
       />
-      {formatName(props.name, props.selected)}
+      {formatName(name, selected)}
     </li>
   )
 }
