@@ -8,7 +8,7 @@ export default function InterviewerListitem(props) {
     "interviewers__item--selected": props.selected,
   });
 
-  const imgClass = classNames({ //conditional SCSS for if selected/not
+  const imgClass = classNames({ //conditional SCSS for avatar if selected/not
     "interviewers__item-image": props.avatar,
     "interviewers__item-image--selected-image":props.avatar && props.selected
   })
