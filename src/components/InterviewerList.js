@@ -10,13 +10,13 @@ export default function InterviewerList(props) {
       <h4 className="interviewers__header text--light">Interviewer</h4>
       <ul className="interviewers__list">
 
-        {interviewers.map((theInterviewer) => (
+        {interviewers.map((interviewer) => (
           <InterviewerListItem
-            key={theInterviewer.id}
-            name={theInterviewer.name}
-            avatar={theInterviewer.avatar}
-            selected={theInterviewer.id === value}
-            setInterviewer={() => {onChange(theInterviewer.id)}} //set interviewer  w/ anon fcn declaration so it's not called right away
+            key={interviewer.id}
+            name={interviewer.name}
+            avatar={interviewer.avatar}
+            selected={interviewer.id === value}
+            setInterviewer={() => {onChange(interviewer.id)}} //set interviewer  w/ anon fcn declaration so it's not called right away
             />
         ))}
       </ul>

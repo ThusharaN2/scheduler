@@ -14,11 +14,6 @@ export default function InterviewerListitem(props) {
     "interviewers__item-image--selected-image": avatar && selected
   })
 
-  function formatName(name,selected){ //conditionally renders name 
-    if (selected) {
-      return `${name}`
-    }
-  }
   return (
     <li className={interviewerClass} onClick={setInterviewer}> 
       <img
@@ -26,7 +21,7 @@ export default function InterviewerListitem(props) {
         src={avatar}
         alt={name}
       />
-      {formatName(name, selected)}
+      {selected && name} 
     </li>
   )
 }

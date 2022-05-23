@@ -2,7 +2,7 @@ import React from "react";
 import DayListItem from "components/DayListItem";
 
 export default function DayList(props) {
-  const { days, onChange } = props;
+  const { days, onChange, value } = props;
 
   return (
     <ul>
@@ -11,7 +11,7 @@ export default function DayList(props) {
           key={day.id}
           name={day.name}
           spots={day.spots}
-          selected={day.name === props.value}
+          selected={day.name === value}
           setDay={onChange}
         />
       ))}
