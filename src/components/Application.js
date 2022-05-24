@@ -1,26 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import "components/Application.scss";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
 
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
 
 
 const appointments = {     //data is constant so shouldn't be w/in application component
@@ -65,7 +49,18 @@ const appointments = {     //data is constant so shouldn't be w/in application c
 
 
 export default function Application(props) {
-  const [day, setDay] = useState("Monday"); //useState to common ancestor (app.js) & pass down to the children w/ props
+  const [day, setDay] = useState(""); //useState to common ancestor (app.js) & pass down to the children w/ props
+  const [days, setDays] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8001/api/days")
+    .then((res) => {
+      setDays(res.data)
+      console.log(res.data)
+    })
+
+  },[])
+
   return (
     <main className="layout">
       <section className="sidebar">
