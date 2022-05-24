@@ -157,5 +157,21 @@ storiesOf("Button", module)
   .add("Confirm", () => <Confirm onCancel={action("onCancel")} onConfirm={action("onConfirm")}  />)
   .add("Status", () => <Status message="Deleting"/>)
   .add("Error", () => <Error onClose={action("onClose")} />)
-  .add("Edit", () => <Form interviewers={interviewers} interviewer={2} student="Thushara N"/>)
-  .add("Create", () => <Form interviewers={interviewers} />)
+  .add("Edit", () => <Form student="Thushara Nesaratnam" interviewer={1} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
+  .add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="4pm" />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
+  .add("Appointment Booked", () => (
+    <Fragment>
+      <Appointment
+        id={1}
+        time="4pm"
+        interview={{ student: "Lydia Miller-Jones", interviewer }}
+      />
+      <Appointment time="5pm" />
+    </Fragment>
+  ))
