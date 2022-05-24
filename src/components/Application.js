@@ -49,8 +49,16 @@ const appointments = {     //data is constant so shouldn't be w/in application c
 
 
 export default function Application(props) {
-  const [day, setDay] = useState(""); //useState to common ancestor (app.js) & pass down to the children w/ props
-  const [days, setDays] = useState([]);
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // you may put the line below, but will have to remove/comment hardcoded appointments variable
+    appointments: {}
+  });
+
+  const setDay = day => setState({ ...state, day });
+  const setDays = (days)=>{ setState({...state, days})}
+
 
   useEffect(() => {
     axios.get("/api/days")
@@ -71,8 +79,8 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-            days={days}
-            value={day} //getter
+            days={state.days}
+            value={state.day} //getter
             onChange={setDay} //setter
           />
         </nav>

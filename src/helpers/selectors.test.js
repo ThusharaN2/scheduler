@@ -29,6 +29,7 @@ const state = {
     }
   }
 };
+//add only to test each one
 
 test("getAppointmentsForDay returns an array", () => {
   const result = getAppointmentsForDay(state, "Monday");
