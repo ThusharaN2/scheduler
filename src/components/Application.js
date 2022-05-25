@@ -4,22 +4,32 @@ import axios from "axios";
 import "components/Application.scss";
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
 export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    // you may put the line below, but will have to remove/comment hardcoded appointments variable
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   });
 
-  // const dailyAppointments = [];
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const setDay = day => setState({ ...state, day });
   // const setDays = (days) => {
   //   setState(prev => ({ ...prev, days }));
 
+  const schedule = dailyAppointments.map((appointment) => {  //same as what our object.values() fcn did before for each appt
+    const interview = getInterview(state, appointment.interview);
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+      />
+    );
+  });
 
     useEffect(() => {
       Promise.all([
@@ -56,14 +66,8 @@ export default function Application(props) {
             alt="Lighthouse Labs"
           />      </section>
         <section className="schedule">
-
-          {dailyAppointments.map(appointment =>  //uses Object.values() to change appts into an array to be mapped
-            <Appointment
-              key={appointment.id}
-              {...appointment}
-            /> //below represents last appt of day(check console to see if appt has key)
-          )}
-          <Appointment key="last" time="5pm" />
+          {schedule}           
+          <Appointment key="last" time="5pm" /> 
         </section>
       </main>
     );
