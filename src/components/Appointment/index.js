@@ -16,6 +16,8 @@ const CONFIRM = "CONFIRM";
 const SAVING = "SAVING";
 const DELETING = "DELETING";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE"
+const ERROR_DELETE = "ERROR_DELETE"
 
 export default function Appointment(props) {
 
@@ -31,14 +33,19 @@ export default function Appointment(props) {
     transition(SAVING);
     bookInterview(id, interview)
       .then(() => {transition(SHOW)})
+      .catch(error =>{ console.log("ERROR_SAVE: ", error)
+        transition(ERROR_SAVE, true)}
+      );
   }
 
   //fcn to delete interview
   function deleteInterview(id) {
-
     transition(DELETING)
     cancelInterview(id)
       .then(() => transition(EMPTY))
+      .catch(error =>{ console.log("ERROR_DELETE: ", error)
+        transition(ERROR_DELETE, true)}
+      );
   }
 
 
@@ -68,7 +75,7 @@ export default function Appointment(props) {
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === CONFIRM && <Confirm message={"Can you confirm that want to delete this appointment?"} onCancel={() => back()} onConfirm={() => deleteInterview(id)} />}
-      {mode === EDIT && <Form {...props.interview} interviewers={props.interviewers} onCancel={() => back()} onSave={save}/>}
+      {mode === EDIT && <Form {...props.interview} interviewers={interviewers} onCancel={() => back()} onSave={save}/>}
     </article>
 
   )
