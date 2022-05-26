@@ -6,11 +6,13 @@ import Show from './Show';
 import Form from './Form';
 import useVisualMode from "hooks/useVisualMode";
 
-const EMPTY = "EMPTY";
-const SHOW = "SHOW";
-const CREATE = "CREATE";
+
 
 export default function Appointment(props) {
+  const EMPTY = "EMPTY";
+  const SHOW = "SHOW";
+  const CREATE = "CREATE";
+
   const { time, interview } = props;
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
