@@ -22,12 +22,19 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment,
     };  
+
+    return axios
+      .put(`/api/appointments/${id}`, { interview })
+      .then(setState({ ...state, appointments: appointments }))
+      .catch((error) => {console.log("ERROR_SAVE: ", error);});
   }
 
-    function cancelInterview(id) {
+  
+
+    function cancelInterview(id, interview) {
       const appointment = {
         ...state.appointments[id],
-        interview: null
+        interview: {...interview}
       }; 
        const appointments = {
         ...state.appointments,
@@ -36,7 +43,7 @@ export default function Application(props) {
       return axios 
       .delete(`/api/appointments/${id}`, appointment)
       .then(setState({ ...state, appointments: appointments }))
-      .catch((error) => { console.log("Error: ", error);});
+      .catch((error) => { console.log("ERROR_DELETE: ", error);});
     };
   
 
@@ -45,7 +52,6 @@ export default function Application(props) {
   const setDay = day => setState({ ...state, day });
   // const setDays = (days) => {
   //   setState(prev => ({ ...prev, days }));
-
   const schedule = dailyAppointments.map((appointment) => {  //same as what our object.values() fcn did before for each appt
     const interview = getInterview(state, appointment.interview);
     return (
@@ -71,7 +77,7 @@ export default function Application(props) {
         // console.log(all[1].data)
         // console.log(all[2].data)
         setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
-      }).catch(err=>console.log("error",err))
+      }).catch(err=>console.log("Error: ",err))
     }, [])
 
     return (
@@ -101,5 +107,5 @@ export default function Application(props) {
         </section>
       </main>
     );
-  }
+    }
 
