@@ -6,13 +6,14 @@ const FIRST = "FIRST";
 const SECOND = "SECOND";
 const THIRD = "THIRD";
 
-
+//first
 test("useVisualMode should initialize with default value", () => {
   const { result } = renderHook(() => useVisualMode(FIRST));
 
   expect(result.current.mode).toBe(FIRST);
 });
 
+//second
 test("useVisualMode should transition to another mode", () => {
   const { result } = renderHook(() => useVisualMode(FIRST));
 
@@ -20,6 +21,7 @@ test("useVisualMode should transition to another mode", () => {
   expect(result.current.mode).toBe(SECOND);
 });
 
+//third
 test("useVisualMode should return to previous mode", () => {
   const { result } = renderHook(() => useVisualMode(FIRST));
 
