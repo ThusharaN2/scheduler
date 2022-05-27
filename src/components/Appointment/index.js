@@ -57,24 +57,11 @@ export default function Appointment(props) {
     <article className="appointment">
       <Header time={time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SHOW && (
-        <Show
-          student={interview.student}
-          interviewer={interview.interviewer}
-          onDelete={() => transition(CONFIRM)}
-          onEdit={edit}
-        />
-      )}
-      {mode === CREATE && (
-        <Form
-          interviewers={interviewers}
-          onCancel={() => back()}
-          onSave={save}
-        />
-      )}
+      {mode === SHOW && (<Show student={interview.student} interviewer={interview.interviewer} onDelete={() => transition(CONFIRM)} onEdit={edit}/>)}
+      {mode === CREATE && (<Form interviewers={interviewers} onCancel={() => back()} onSave={save}/>)}
       {mode === SAVING && <Status message={"Saving..."} />}
       {mode === DELETING && <Status message={"Deleting..."} />}
-      {mode === CONFIRM && <Confirm message={"Can you confirm that want to delete this appointment?"} onCancel={() => back()} onConfirm={() => deleteInterview(id)} />}
+      {mode === CONFIRM && <Confirm message={"Are you sure you want to delete this appointment?"} onCancel={() => back()} onConfirm={() => deleteInterview(id)} />}
       {mode === EDIT && <Form {...props.interview} interviewers={interviewers} onCancel={() => back()} onSave={save}/>}
     </article>
 

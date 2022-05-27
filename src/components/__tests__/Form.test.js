@@ -59,7 +59,6 @@ describe("Form", () => {
         interviewer={interviewers[0].id}
       />
 
-      
     );
     //save btn
       fireEvent.click(getByText("Save"));
