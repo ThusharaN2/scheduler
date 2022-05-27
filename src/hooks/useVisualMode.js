@@ -7,19 +7,19 @@ export default function useVisualMode(initial) {
   //lets us continue to any other mode
   const transition = (newMode, replace = false) => {
     setMode(newMode)
-    if(replace) { 
-      return setHistory([...history.slice(0, history.length-1), newMode]);
-    } 
+    if (replace) {
+      return setHistory([...history.slice(0, history.length - 1), newMode]);
+    }
     setHistory([...history, newMode]);
   }
-//return to previous mode
+  //return to previous mode
   const back = () => {
     if (history.length === 1) {
-      return; 
+      return;
     }
-    setHistory([...history.slice(0, history.length -1)]);
-    setMode(history[history.length -2])
+    setHistory([...history.slice(0, history.length - 1)]);
+    setMode(history[history.length - 2])
   }
 
-  return {mode, history, transition, back}
+  return { mode, history, transition, back }
 }  

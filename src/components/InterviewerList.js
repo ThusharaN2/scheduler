@@ -17,8 +17,8 @@ export default function InterviewerList(props) {
             name={interviewer.name}
             avatar={interviewer.avatar}
             selected={interviewer.id === value}
-            setInterviewer={() => {onChange(interviewer.id)}} //set interviewer  w/ anon fcn declaration so it's not called right away
-            />
+            setInterviewer={() => { onChange(interviewer.id) }} //set interviewer  w/ anon fcn declaration so it's not called right away
+          />
         ))}
       </ul>
     </section>

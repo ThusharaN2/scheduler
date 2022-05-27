@@ -4,9 +4,9 @@ import Appointment from "../Appointments/index"
 
 afterEach(cleanup);
 
-describe("Appointment",()=>{
+describe("Appointment", () => {
   it("renders without crashing", () => {
     render(<Appointment />);
   });
-  
+
 }) 

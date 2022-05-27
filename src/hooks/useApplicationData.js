@@ -10,13 +10,13 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
-//updating spots
+  //updating spots
   function updateSpots(state, appointments) {
     const currentDay = state.days.find((day) => day.name === state.day);
     const apptId = currentDay.appointments //appts for the day
     let spots = 0;
     //increases spots as you add to appt
-    for (const id of apptId) { 
+    for (const id of apptId) {
       if (appointments[id].interview === null) {
         spots++;
       }
@@ -65,11 +65,11 @@ export default function useApplicationData() {
     return axios
       .delete(`/api/appointments/${id}`, appointment)
       .then(() => {
-       const newDays = updateSpots(state,appointments)
-       setState({ ...state, appointments: appointments, newDays })
-      .catch((error) => { console.log("ERROR_DELETE: ", error); });
-  })
-}
+        const newDays = updateSpots(state, appointments)
+        setState({ ...state, appointments: appointments, newDays })
+          .catch((error) => { console.log("ERROR_DELETE: ", error); });
+      })
+  }
 
   useEffect(() => {
     Promise.all([
