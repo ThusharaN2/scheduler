@@ -4,7 +4,6 @@ describe("Navigation", () => {
   });
 
   it("should Naviage to Tuesday", ()=>{
-
     cy.visit("/");
     cy.get("li").contains("Tuesday").click();
   })
