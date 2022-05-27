@@ -27,6 +27,16 @@ This is a screenshot of deleting an appointment and a confirmation is asked befo
 This is a screenshot of a day with no time slots left, all full!
 
 
+## Dependencies
+
+- Axios
+- classnames
+- react
+- react-test-renderer
+- @testing-library/react-hooks
+
+NOTE:
+Set up the server using scheduler-api from: [https://github.com/lighthouse-labs/scheduler-api]
 
 ## Setup
 
