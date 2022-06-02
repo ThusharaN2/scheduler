@@ -51,8 +51,8 @@ export default function Appointment(props) {
       }
       );
   }
-
-
+  
+//fcn to edit 
   function edit() {
     transition(EDIT)
   }

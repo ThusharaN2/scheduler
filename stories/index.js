@@ -19,7 +19,7 @@ import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
 
-
+//button stories
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -35,7 +35,7 @@ storiesOf("Button", module)
       Disabled
     </Button>
   ));
-
+//daylistitem stories
   storiesOf("DayListItem", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -64,7 +64,7 @@ storiesOf("Button", module)
       spots: 0,
     },
   ];
-  
+  //daylist stories
   storiesOf("DayList", module)
     .addParameters({
       backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -84,7 +84,7 @@ storiesOf("Button", module)
       name: "Sylvia Palmer",
       avatar: "https://i.imgur.com/LpaY82x.png"
     };
-    
+    //interviewerlistitem stories
     storiesOf("InterviewerListItem", module)
       .addParameters({
         backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -112,7 +112,7 @@ storiesOf("Button", module)
         />
       ));
 
-
+      //interviewerlist stories
       const interviewers = [
         { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
         { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },
@@ -144,7 +144,7 @@ storiesOf("Button", module)
         ));
 
 
-
+//appointment stories
   storiesOf("Appointment", module)
   .addParameters({
     backgrounds: [{ name: "white", value: "#fff", default: true }]
@@ -153,7 +153,7 @@ storiesOf("Button", module)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
-  .add("Show", () => <Show onEdit={action("onEdit")} onDelete={action("onDelete")} student="Ben" interviewer={interviewer} />)
+  .add("Show", () => <Show onEdit={action("onEdit")} onDelete={action("onDelete")} student="Sara" interviewer={interviewer} />)
   .add("Confirm", () => <Confirm onCancel={action("onCancel")} onConfirm={action("onConfirm")}  />)
   .add("Status", () => <Status message="Deleting"/>)
   .add("Error", () => <Error onClose={action("onClose")} />)
