@@ -56,7 +56,7 @@ export default function Appointment(props) {
   function edit() {
     transition(EDIT)
   }
-
+console.log(mode, "------------mode")
   return (
     <article className="appointment">
       <Header time={time} />
@@ -66,7 +66,11 @@ export default function Appointment(props) {
       {mode === SAVING && <Status message={"Saving..."} />}
       {mode === DELETING && <Status message={"Deleting..."} />}
       {mode === CONFIRM && <Confirm message={"Are you sure you want to delete this appointment?"} onCancel={() => back()} onConfirm={() => deleteInterview(id)} />}
-      {mode === EDIT && <Form {...props.interview} interviewers={interviewers} onCancel={() => back()} onSave={save} />}
+      {mode === EDIT && <Form 
+      student={interview.student} 
+      interviewer={interview.interviewer.id} 
+      interviewers={interviewers} 
+      onCancel={() => back()} onSave={save} />}
     </article>
 
   )

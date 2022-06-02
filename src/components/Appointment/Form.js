@@ -22,7 +22,6 @@ export default function Form(props) {
     reset();
     onCancel();
   }
-
   //validate that both student name & interviewer is typed in before saving appt
   const validate = () => {
     if (student === "") {
