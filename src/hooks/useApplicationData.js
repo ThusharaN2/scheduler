@@ -48,7 +48,7 @@ export default function useApplicationData() {
         const newDays = updateSpots(state, appointments);
           setState({ ...state, appointments: appointments, days: newDays })
       })
-      .catch((error) => { console.log("ERROR_SAVE: ", error); });
+      // .catch((error) => { console.log("ERROR_SAVE: ", error); });
   }
 
 
@@ -68,7 +68,7 @@ export default function useApplicationData() {
         const newDays = updateSpots(state, appointments)
         setState({ ...state, appointments: appointments, days: newDays })
       })
-      .catch((error) => { console.log("ERROR_DELETE: ", error); });
+      // .catch((error) => { console.log("ERROR_DELETE: ", error); });
 
   }
   // data request get
